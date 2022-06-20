@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mt-2">Lists</h1>
+<hr class="mt-0 mb-4">
+
+<ul class="list-group">
+    {% for list in user.todolist.all %}
+    <li class="list-group-item"><a href="/list/{{ list.id }}">{{ list.name }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

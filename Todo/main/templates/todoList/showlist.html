@@ -1,0 +1,15 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+<h1>Saved Lists</h1>
+    <div class="container">
+        <ul style="list-style-type: none">
+            {% for list in lists %}
+            <li>
+                <a href="/main/show/{{ list.name }}">{{ list.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+{% endblock %}

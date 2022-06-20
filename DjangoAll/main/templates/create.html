@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mt-2">Add New List</h1>
+<hr class="mt-0 mb-4">
+<h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo laborum sint harum aliquid veniam porro atque unde
+    dolorum voluptate incidunt velit omnis, expedita soluta voluptatum nam quasi et asperiores aperiam similique enim
+    officiis repudiandae quis facere. Perferendis aliquid quam natus.</h3>
+<h3>orem ipsum dolor sit amet consectetur adipisicing elit. Quo laborum sint harum aliquid veniam porro atque unde
+    dolorum voluptate incidunt velit omnis, expedita soluta voluptatum nam quasi et asperiores aperiam similique enim
+    officiis repudiandae quis facere. Perferendis aliquid quam natus.</h3>
+<form action="/create/" method="post">
+    {% csrf_token %}
+    <div class="newList" style="margin-top: 10rem;">
+        {{ form.name }}
+        <input type="submit" value="Save" class="btn btn-secondary but1">
+
+    </div>
+</form>
+{% endblock %}

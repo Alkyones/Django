@@ -1,0 +1,22 @@
+body {
+    background-color: #f1f1f1;
+}
+
+.main-center-div {
+    margin: 0 auto;
+    max-width: 40rem;
+    padding: 2rem;
+    padding-top: 4rem;
+}
+
+form > * {
+    margin-bottom: 1rem;
+    border-radius: 3.33rem;
+}   
+
+form > input {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    background-color: #f1f1f1;
+}

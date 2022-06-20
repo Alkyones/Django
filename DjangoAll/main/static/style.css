@@ -1,0 +1,77 @@
+.newList {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+ul > li > a {
+    color: #111;
+    font-size: 1.9rem;
+    font-weight: 600;
+    text-decoration: none;
+
+
+}
+
+ul > li > a:hover {
+    color: #111;
+    text-decoration: underline;
+}
+
+
+.form-check {
+    display: flex;
+    margin: 0.41rem;
+    justify-content: flex-start !important;
+}
+.form-check-input {
+    font-size: 1.5rem !important;
+    align-self:center;
+    margin-right: 0.5rem;
+    border-color: #111 !important;
+}
+
+.form-check-input:checked{
+    background-color: #111 !important;
+    box-shadow: none !important;
+}
+
+.btn-color {
+    background-color: #111 !important;
+    color: #fff !important;
+    border-color: #111 !important;
+}
+
+.btn-color:hover {
+    filter:brightness(4)
+}
+
+.form-check-label span{
+
+    width: 20%;
+    font-size: 2.2rem !important;
+}
+
+.but1{
+    background-color: #111;
+    font-size: 1.7rem;
+}
+
+.but1{
+    font-size: 1.6rem;
+    width: 8.7rem;
+    border:none;
+
+}
+
+input[type="text"]::placeholder {
+    color: #6c757d !important;
+    font-size: 1.6rem;
+    padding:0.2rem;
+}
+
+
+input[type="text"]:focus {
+    border-color: #111 !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}

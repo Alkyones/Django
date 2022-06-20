@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+{% load crispy_forms_tags%}
+    <link rel="stylesheet" href="{% static 'css/personPage.css'%}">
+{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags%}
+
+<center class="main-center-div">
+    <h2>Add new user</h2>
+</center>
+<div class="form-creation-div" style="width:50%;margin:0 auto;align-items:center;text-align:center;">
+    <form action="" method="post">
+        {% csrf_token %}
+
+        {{ form|crispy}}
+</div>
+</form>
+{% endblock %}

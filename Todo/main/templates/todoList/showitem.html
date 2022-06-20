@@ -1,0 +1,22 @@
+{%  extends 'base.html' %}
+{% load crispy_forms_tags  %}
+{% block content %}
+    <h1>{{listName.name}}</h1>
+
+    {% if items %}
+        <ul style="list-style-type: none">
+            {% for item in items %}
+                <li>{{item.text}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No items in this list</p>
+    {% endif %}
+    <div style="margin-top:10rem;" class="add-new">
+        <form action="" method="post">
+        {% csrf_token %}
+        {{form| crispy}}
+        <input type="submit" class="btn btn-secondary" value="Add new Item">
+        </form>
+    </div>
+{% endblock %}

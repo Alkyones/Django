@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 clas="mt-2">{{element.name}}</h1>
+<hr class="mt-0 mb-4">
+
+<form action="#" method="post">
+    {%csrf_token%}
+    <div class="newList">
+        <input class="form-control" type="text" name="item" id="new">
+        <input class="btn btn-secondary but1" type="submit" name="add" value="New item">
+    </div>
+    <ul class="list-group">
+
+        {% for item in element.item_set.all %}
+        {% if item.complete %}
+        <li class="list-group-item">
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="clicked" name="c{{item.id}}"
+                    id="flexCheckDefault" checked>
+                <label class="form-check-label" for="flexCheckDefault">
+                    <span>{{item}}</span>
+                </label>
+            </div>
+        </li>
+        {% else %}
+        <li class="list-group-item">
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="clicked" name="c{{item.id}}"
+                    id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    <span>{{item}}</span>
+                </label>
+            </div>
+        </li>
+        {% endif %}
+        {% endfor %}
+        <input class="btn btn-color" type="submit" name="save" value="Save">
+
+
+</form>
+</ul>
+
+{% endblock %}
