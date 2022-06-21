@@ -1,16 +1,29 @@
-from turtle import update
 import requests
+import getpass
+auth_respons = "http://127.0.0.1:8000/api/"
 
-endpoint = "http://127.0.0.1:8000/api/user/update/1/"
+username = input("Username: ")
+password = getpass.getpass("Password: ")
 
-data = {
-    'first_name': 'John',
-    'last_name': 'Doe',
-    'email': 'rest_ahre@gmail.com',
-    'password': '123456',
-}
+auth_response = requests.post(auth_respons, data={"username": username, "password": password})
 
 
-update_user = requests.put(endpoint, data=data)
+if auth_response.status_code == 200:
+    token = auth_response.json()["token"]
+    print(token)
+    headers = {"Authorization": f"Token {token}"}
+    pk = input('Enter the pk of the user you want to delete: ')
 
-print(update_user.json())
+    data = {
+        "first_name": "test",
+        "last_name": "test",
+        "email": "dasda@gmail.com",
+        "password": "test",
+    }
+
+    endpoint = f"http://127.0.0.1:8000/api/user/update/{pk}/" #
+    response = requests.put(endpoint,headers=headers, data=data)
+    print(response.json())
+    print(response.status_code)
+else:
+    print('Authentication failed')

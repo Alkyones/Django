@@ -1,12 +1,21 @@
-from os import preadv
-from warnings import resetwarnings
 import requests
+import getpass
+auth_respons = "http://127.0.0.1:8000/api/"
+
+username = input("Username: ")
+password = getpass.getpass("Password: ")
+
+auth_response = requests.post(auth_respons, data={"username": username, "password": password})
 
 
-endpoint = "http://127.0.0.1:8000/api/user/delete/1/"
+if auth_response.status_code == 200:
+    token = auth_response.json()["token"]
+    print(token)
+    headers = {"Authorization": f"Token {token}"}
+    pk = input('Enter the pk of the user you want to delete: ')
 
-delete_request = requests.delete(endpoint)
-
-print(delete_request.status_code) 
-
-
+    endpoint = f"http://127.0.0.1:8000/api/user/delete/{pk}/" #
+    response = requests.delete(endpoint,headers=headers)
+    print(response.status_code)
+else:
+    print('Authentication failed')
