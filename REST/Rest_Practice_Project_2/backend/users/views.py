@@ -5,6 +5,9 @@ from django.shortcuts import get_object_or_404
 from .models import newUserModel
 from .serializers import newUserModelSerializers
 
+from rest_framework.permissions import DjangoModelPermissions, IsAuthenticatedOrReadOnly
+
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 
 # Create your views here.
 
@@ -12,7 +15,9 @@ class newUserModelList(mixins.ListModelMixin,generics.DestroyAPIView,mixins.Retr
     queryset = newUserModel.objects.all()
     serializer_class = newUserModelSerializers
     #authentication
+    authentication_classes = [TokenAuthentication]
     #permission
+    permission_classes = [DjangoModelPermissions, IsAuthenticatedOrReadOnly]
     
     lookup_field = 'pk'
 
