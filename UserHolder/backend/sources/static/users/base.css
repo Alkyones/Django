@@ -1,0 +1,84 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 2;
+    color: #f1f1f1;
+    background-color: rgb(30, 28, 28);
+}
+
+
+
+h1 {
+    font-size: 4em;
+    color: rgb(38, 161, 223);
+    font-family: monospace;
+}
+
+hr {
+    color: #f1f1f1;
+    width: 60%;
+    border: 1px solid #f1f1f1;
+}
+
+
+.nav--hidden {
+    transform: translateY(-70px);
+    box-shadow: none;
+    transition:  0.6s all;
+}
+
+.navbar-container {
+    width: 100%;
+    margin-top: 0.3rem;
+    transition:  0.6s all;
+    position: relative;
+    
+}
+
+.navbar {
+    width: 100%;
+    background-color: rgb(76, 75, 75);
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px 0px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+
+}
+
+.nav-item  {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navbar .nav-item a {
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: #f1f1f1;
+
+
+    
+
+    
+
+}
+
+
+.head-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6rem;
+}
+
+
+.head-section:last-child {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}

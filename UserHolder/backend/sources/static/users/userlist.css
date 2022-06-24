@@ -1,0 +1,27 @@
+
+ul {
+    width: 100%;
+    list-style: none;
+    font-size: 2rem;
+}
+
+.container li {
+    display: flex;
+    justify-content: space-between;
+    color: #f1f1f1;
+}
+
+.container ul li a {
+    text-decoration: none;
+    color: inherit  ;
+}
+
+.container {
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    text-align: center;
+    color: #f1f1f1;
+}
+
+

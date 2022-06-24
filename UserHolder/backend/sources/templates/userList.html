@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'users/userlist.css' %}">
+{% endblock%}
+
+{% block headcontent %}
+<h1>LIST OF USERS</h1>
+<hr>
+{% endblock %}
+{% block body %}
+<div class="container">
+
+        <ul>
+            {% for user in users %}
+                <li class="active"><a href="/users/detail/{{user.id}}">{{user.username}} - {{ user.email}}</a>
+                <a href="/users/delete/{{user.id}}" style="color:red;">X</a></li>
+            {% endfor %}
+        </ul>
+    </div>    
+
+{% endblock %}

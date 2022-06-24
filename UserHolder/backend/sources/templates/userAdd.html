@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block head%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'users/useradd.css' %}">
+{% endblock %}
+{% block headcontent %}
+<h1>ADD NEW USER</h1>
+<hr>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="form-group">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form}}
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
