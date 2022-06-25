@@ -55,7 +55,7 @@ def userDetail(request,pk):
 def userDelete(request,pk):
     user = UserSave.objects.get(pk=pk)
     user.delete()
-    return redirect('/users/')
+    return redirect('/accounts/profile/')
 
 
 def page_not_found_view(request, exception):
