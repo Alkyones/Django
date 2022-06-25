@@ -1,22 +1,17 @@
 {% extends 'base.html' %}
+
 {% block head%}
 {% load static %}
 <link rel="stylesheet" href="{% static 'users/useradd.css' %}">
 {% endblock %}
 {% block headcontent %}
-{{user.username}}
-<h1>ADD NEW USER</h1>
+<h1>UPS!</h1>
+<h2>Something went wrong...</h2>
 <hr>
 {% endblock %}
 
 {% block body %}
 <div class="container">
-    <div class="form-group">
-        <form action="" method="post">
-            {% csrf_token %}
-            {{form}}
-            <button type="submit">Save</button>
-        </form>
-    </div>
+    <h1>Seems like the page doesn't exist!</h1>       
 </div>
 {% endblock %}

@@ -4,8 +4,7 @@
 <link rel="stylesheet" href="{% static 'users/useradd.css' %}">
 {% endblock %}
 {% block headcontent %}
-{{user.username}}
-<h1>ADD NEW USER</h1>
+<h1>Login</h1>
 <hr>
 {% endblock %}
 
@@ -15,8 +14,9 @@
         <form action="" method="post">
             {% csrf_token %}
             {{form}}
-            <button type="submit">Save</button>
+            <button type="submit">Login</button>
         </form>
+        
     </div>
 </div>
 {% endblock %}
