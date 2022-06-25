@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User # kayitli kullanicalarin oldugu database
 
 # Create your models here.
 
@@ -12,3 +13,4 @@ class Pass(models.Model):
 
     def __str__(self):
         return self.website    # return the name of the pass
+

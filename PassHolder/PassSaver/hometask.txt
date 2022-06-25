@@ -1,0 +1,4 @@
+1. Login ve register adina css ayarla ve bagla
+2. crispy kullan
+
+3. yeni bir django projesi ac ve icine register ve login ayarla.

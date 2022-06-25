@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+
+{%block title%}
+    <h1>register form</h1>
+{%endblock%}
+
+{%block content%}
+<div class="register">
+    <div class="save">
+        <form action="" method="post">
+            {%csrf_token%}
+            {{form}}
+            <button type="submit">save</button>
+        <form>
+    </div>
+</div>
+{% endblock %}
