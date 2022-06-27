@@ -1,24 +1,22 @@
 from django.shortcuts import get_object_or_404
-from rest_framework import generics , mixins, permissions,authentication
+from rest_framework import generics , mixins, permissions
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import Product
 from .serializers import ProductSerializer
-from .permissions import IsStaffEditorPermissions
 
-from api.authentication import TokenAuthentication as BaseTokenAuth
 
-class ProductDetailAPIView(generics.RetrieveAPIView):
+from api.mixins import StaffEditorPermissionMixin
+
+class ProductDetailAPIView(StaffEditorPermissionMixin,generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     # lookup_field = 'id'
 
-class ProductListCreateAPIView(generics.ListCreateAPIView):
+class ProductListCreateAPIView(StaffEditorPermissionMixin,generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    authentication_classes = [authentication.SessionAuthentication,BaseTokenAuth]
-    permission_classes = [IsStaffEditorPermissions]
     # lookup_field = 'id'   # this is not needed because we are using the primary key of the model
 
     def perform_create(self, serializer):
@@ -30,7 +28,7 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
         print(serializer)
         serializer.save(content = content)
 
-class ProductDeleteAPIView(generics.DestroyAPIView):
+class ProductDeleteAPIView(StaffEditorPermissionMixin,generics.DestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     lookup_field = 'pk'
@@ -39,11 +37,10 @@ class ProductDeleteAPIView(generics.DestroyAPIView):
         # instance.delete()
         super().perform_destroy(instance)   
 
-class ProductUpdateAPIView(generics.UpdateAPIView):
+class ProductUpdateAPIView(StaffEditorPermissionMixin,generics.UpdateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    authentication_classes = [authentication.SessionAuthentication,authentication.TokenAuthentication]
-    permission_classes = [permissions.DjangoModelPermissions]
+    
     
     lookup_field = 'pk'
 
@@ -52,13 +49,6 @@ class ProductUpdateAPIView(generics.UpdateAPIView):
         if not instance.content:
             instance.content = instance.title
             instance.save()
-# class ProductListAPIView(generics.ListAPIView):
-#     """
-#     Not being used
-#     """
-#     queryset = Product.objects.all()
-#     serializer_class = ProductSerializer
-#     # lookup_field = 'id'
 
 class ProductMixinView(
     mixins.CreateModelMixin,
@@ -70,8 +60,7 @@ class ProductMixinView(
 
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    authentication_classes = [authentication.SessionAuthentication]
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser,permissions.IsAuthenticated]
     lookup_field = 'pk'
 
     def get(self, request, *args, **kwargs):
