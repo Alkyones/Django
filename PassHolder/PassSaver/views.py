@@ -39,6 +39,22 @@ def deletePassword(request,pk):
     item.delete()
     return redirect('add')
 
+def updatePassword(request,pk):
+    if request.method == 'POST':
+        form = PassForm(request.POST)
+        if form.is_valid():
+            Pass.objects.filter(pk=pk).update(
+                user=request.user,
+                website = request.POST.get('website'),
+                username = request.POST.get('username'),
+                password = request.POST.get('password'),
+                # ?
+            )
+        return redirect('add')
+    
+    form = PassForm()
+    return render(request,'updatePassword.html', {'form': form})
+
 def register(request):
     if request.method == 'GET':
         form = registerForm()
