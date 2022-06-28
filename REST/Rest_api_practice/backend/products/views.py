@@ -7,14 +7,14 @@ from .models import Product
 from .serializers import ProductSerializer
 
 
-from api.mixins import StaffEditorPermissionMixin
+from api.mixins import StaffEditorPermissionMixin, UserQuerySetMixin
 
-class ProductDetailAPIView(StaffEditorPermissionMixin,generics.RetrieveAPIView):
+class ProductDetailAPIView(StaffEditorPermissionMixin,UserQuerySetMixin,generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     # lookup_field = 'id'
 
-class ProductListCreateAPIView(StaffEditorPermissionMixin,generics.ListCreateAPIView):
+class ProductListCreateAPIView(StaffEditorPermissionMixin,UserQuerySetMixin,generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     # lookup_field = 'id'   # this is not needed because we are using the primary key of the model
@@ -26,9 +26,14 @@ class ProductListCreateAPIView(StaffEditorPermissionMixin,generics.ListCreateAPI
         if content is None:
             content = title
         print(serializer)
-        serializer.save(content = content)
+        serializer.save(user= self.request.user ,content = content)
 
-class ProductDeleteAPIView(StaffEditorPermissionMixin,generics.DestroyAPIView):
+    # def get_queryset(self,*args, **kwargs):
+    #     qs = super().get_queryset(*args, **kwargs)
+    #     print(self.request.user)
+    #     return qs.filter(user=self.request.user)
+
+class ProductDeleteAPIView(StaffEditorPermissionMixin,UserQuerySetMixin,generics.DestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     lookup_field = 'pk'
@@ -37,7 +42,7 @@ class ProductDeleteAPIView(StaffEditorPermissionMixin,generics.DestroyAPIView):
         # instance.delete()
         super().perform_destroy(instance)   
 
-class ProductUpdateAPIView(StaffEditorPermissionMixin,generics.UpdateAPIView):
+class ProductUpdateAPIView(StaffEditorPermissionMixin,UserQuerySetMixin,generics.UpdateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     

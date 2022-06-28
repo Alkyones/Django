@@ -4,6 +4,8 @@ from django.contrib.auth.models import User # kayitli kullanicalarin oldugu data
 # Create your models here.
 
 class Pass(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default = 1 , null= False)
+
     website = models.CharField(max_length=100)
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=100)

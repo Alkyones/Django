@@ -1,4 +1,4 @@
-from django.forms import ModelForm, TextInput
+from django.forms import ModelForm
 from .models import Pass
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -7,8 +7,8 @@ from django import forms
 
 class PassForm(ModelForm):
     class Meta:
-        model = Pass
-        fields = ['website','username', 'password']
+        model = Pass # developer made model
+        fields = ['website','username','password']
 
 class registerForm(UserCreationForm):
     username = forms.CharField(max_length=255,label=False, widget=forms.TextInput(attrs={'placeholder':'Please enter a username'}))
@@ -16,5 +16,5 @@ class registerForm(UserCreationForm):
     password2 = forms.CharField(max_length=255,label=False,help_text=False, widget=forms.PasswordInput(attrs={'placeholder':'confirmate your password'}))
 
     class Meta:
-        model = User
+        model = User # built in model
         fields = ['username', 'password1','password2']  

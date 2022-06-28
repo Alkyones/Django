@@ -142,7 +142,8 @@ if DEBUG:
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': auth_classes,
     'DEFAULT_PERMISSION_CLASSES': [
-        "rest_framework.permissions.IsAuthenticatedOrReadOnly", # Get for everybody
-
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly", # Get for everybody,
     ],
+    'DEFAULT_PAGINATION_CLASS': "rest_framework.pagination.LimitOffsetPagination",
+    'PAGE_SIZE': 10,
 }
