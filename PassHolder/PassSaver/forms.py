@@ -6,6 +6,9 @@ from django import forms
 
 
 class PassForm(ModelForm):
+    website = forms.CharField(max_length=255,label=False, widget=forms.TextInput(attrs={'placeholder':'Please enter a website'}))
+    username = forms.CharField(max_length=255,label=False, widget=forms.TextInput(attrs={'placeholder':'Please enter a username'}))
+    password = forms.CharField(max_length=255,label=False,help_text=False, widget=forms.TextInput(attrs={'placeholder':'enter your password'}))
     class Meta:
         model = Pass # developer made model
         fields = ['website','username','password']
