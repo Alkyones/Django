@@ -40,7 +40,6 @@ hr {
 }
 
 .navbar {
-    width: 100%;
     background-color: rgb(76, 75, 75);
     box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px 0px;
     border-radius: 0.5rem;
@@ -52,18 +51,22 @@ hr {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 .navbar .nav-item a {
     font-size: 1.4rem;
     text-decoration: none;
     color: #f1f1f1;
+}
 
-
-    
-
-    
+.left-navbar {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
 }
 

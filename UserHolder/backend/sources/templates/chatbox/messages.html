@@ -1,0 +1,39 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'chatbox/messages.css' %}">
+{% endblock %}
+
+
+{%block body%}
+
+<div class="container">
+    <div class="chat-container" id="chatbox">
+    {% for message in messages %}
+    {% if message.user.username == request.user.username %}
+        <div class="message-self">
+            <h3>{{message.user.username}}</h3>
+            <p>{{message.message}}</p>
+            <p>{{message.created}}</p>   
+        </div>
+    {%else%}
+        <div class="message">
+            <h3>{{message.user.username}}</h3>
+            <p>{{message.message}}</p>
+            <p>{{message.created}}</p>   
+        </div>
+    {% endif %}
+    {% endfor %}
+</div>
+    <div class="post-form">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form}}
+            <button type="submit" id="submitbutton">Send</button>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

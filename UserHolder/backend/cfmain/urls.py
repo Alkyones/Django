@@ -20,12 +20,14 @@ from users import views
 # 127.0.0.1:8000\
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include('users.urls')),
     path('', views.index, name='index'),
     path('', include('django.contrib.auth.urls')),
+    path('register/', views.register,name='register'),
 
-   path('register/', views.register,name='register'),
-   path('accounts/profile/', views.usersList,name='userList'),
+    #apps
+    path('users/', include('users.urls')),
+    path('forum/', include('chatbot.urls')),
+    path('accounts/profile/', views.usersList,name='userList'),
 
 ]
 
