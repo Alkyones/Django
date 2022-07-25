@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'youtube'
+    'youtube',
+    'webpush',
 ]
 
 MIDDLEWARE = [
@@ -99,6 +100,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+WEBPUSH_SETTINGS = {
+   "VAPID_PUBLIC_KEY": "BOrK4AGHOT47xPIdwvekq6chhNQyE4NP96_WHX1OHc7JGnr99-KE5t_wWOl_s9Wst_LFEMPSb-X3dGMlkmRaUhk",
+   "VAPID_PRIVATE_KEY": "jm0cfkKNQOnDJeiunUzTyhLPTdN4e7v1GFh45vgbT8M",
+   "VAPID_ADMIN_EMAIL": "ceenimo9@gmail.com",
+}
 
 
 # Internationalization

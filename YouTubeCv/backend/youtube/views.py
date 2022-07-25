@@ -1,12 +1,12 @@
-from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.contrib import messages
 
 from .forms import fileDownloader
 
 import os
-from pytube import YouTube
 import glob
+
+from pytube import YouTube
 # Create your views here.
 
 
@@ -15,9 +15,10 @@ def index(request):
         form = fileDownloader(request.POST)
         if form.is_valid():
             link = form.cleaned_data["link"]
-            path = os.path.join(os.path.expanduser('~'), 'downloads')
             yt = YouTube(link)
             video = yt.streams.filter(only_audio=True).first()
+
+            path = os.path.join(os.path.expanduser('~'), 'downloads')
 
             if glob.glob(f"{path}//{video.title}.*"):
                 messages.warning(request, "File already exists")
@@ -29,9 +30,6 @@ def index(request):
                 messages.success(request, "File downloaded.")            
             return redirect("index")
 
-            
-
-
+        
     form = fileDownloader()
-
     return render(request, 'index.html', {"form": form})

@@ -110,3 +110,48 @@ form> button:hover {
         color: rgb(255, 225, 225);
       }
 }
+
+
+
+@media screen and (max-width: 1120px) {
+
+    img {
+        width : 190px;
+        height: 8%;
+    }
+
+    form > input {
+        font-size: 0.9rem;
+    }
+    
+    form > button {
+        font-size: 0.9rem;
+    }
+
+    p {
+        font-size: 0.7rem;
+    }
+    
+}
+
+
+@media screen and (max-width: 790px) {
+
+    img {
+        width : 170px;
+        height: 7%;
+    }
+
+    form > input {
+        font-size: 0.5rem;
+    }
+    
+    form > button {
+        font-size: 0.5rem;
+    }
+
+    p {
+        font-size: 0.7rem;
+    }
+    
+}
