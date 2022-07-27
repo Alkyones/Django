@@ -1,3 +1,7 @@
+from ast import LShift
+from asyncore import file_dispatcher
+from cgitb import reset
+from os import listdir
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 # Create your views here.
@@ -42,6 +46,9 @@ def userAdd(request):
             form.save()
             return redirect('userList')
 
+
+
+
     else:
         form = UserForm()
     return render(request, 'userAdd.html',context={'form':form})
@@ -60,3 +67,6 @@ def userDelete(request,pk):
 
 def page_not_found_view(request, exception):
     return render(request, '404.html', status=404)
+
+
+
