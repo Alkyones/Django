@@ -1,0 +1,41 @@
+#form > * {
+    padding: 0.6vw;
+
+}
+
+#form > input:placeholder{
+    color: #222 !important;
+}
+
+
+
+#form > select:placeholder{
+    color: #222 !important;
+}
+#form input {
+    border-radius: 3.33rem !important; 
+    color : #222 !important;
+    font-size: 1.3vw !important;
+}
+
+#form select {
+    color : #222 !important;
+    font-size: 1.3vw !important;
+    border-radius: 3.33rem !important; 
+
+}
+
+#form button {
+    border-radius: 0.87rem !important;
+    font-size: 1.3vw !important;
+    transition: all 0.6s !important;
+}
+
+#form button:hover {
+    background-color : #222 !important;
+    color : #fff !important;
+}
+
+h3 {
+    color: #0D6EFD !important;
+}
