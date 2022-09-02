@@ -3,7 +3,16 @@
 <title> StudTracker | Lessons</title>
 {% endblock %}
 
+{% block search %}
+    <form method="post" class="d-flex">
+        {% csrf_token %}
+        <input class="form-control me-sm-2" name="lessonSearch" type="text" placeholder="Search lesson name">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+{% endblock %}
+
 {% block content %}
+
     <table class=" table table-hover">
         <thead>
             <tr class="table-dark">
@@ -12,6 +21,7 @@
             </tr>
         </thead>
         <tbody>
+            
             {% for lesson in lessons %}
             <tr class="table">
                 <td>{{lesson.lesson_name}}</td>

@@ -1,6 +1,22 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
+
+
+class User(AbstractUser):
+    ADMIN = 1
+    STUDENT = 2
+    TEACHER = 3
+
+    ROLE_CHOICES = (
+        (TEACHER, 'teacher'),
+        (STUDENT, 'student'),
+        (ADMIN, 'admin'),
+    )
+    role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, blank=True, null=True )
+
+
+
 
 class StudentModel(models.Model):
     class genders(models.TextChoices):

@@ -3,7 +3,17 @@
 <title> StudTracker | Students</title>
 {% endblock %}
 
+{% block search %}
+            <form method="post" class="d-flex">
+                {% csrf_token %}
+                <input class="form-control me-sm-2" placeholder="Search student name" name="name" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+{% endblock %}
+
+
 {% block content %}
+
     <table class=" table table-hover">
         <thead>
             <tr class="table-dark">

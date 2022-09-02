@@ -24,6 +24,7 @@
                 aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            {% if request.user.role == 1 %}
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item dropdown">
@@ -48,10 +49,34 @@
                         <a class="nav-link active" href="#">Monthly Track</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                {% elif request.user.role == 2 %}
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="/lessons">Show all lessons</a>
+                      </li>
+                    </ul>
+                </div>
+                {% elif request.user.role == 3 %}
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item actice">
+                            <a class="nav-link" href="/students">Show Available Students</a>
+                        </li>
+                        <li class="nav-item actice">
+                            <a class="nav-link" href="/lessons">Show Lessons</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Monthly Track</a>
+                        </li>
+                    </ul>
+
+                {% endif %}
+
+
+                {% block search %}
+                {% endblock %}
+            
             </div>
         </div>
     </nav>
