@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import LessonModel,StudentModel
-from .forms import StudentForm,LessonForm
+from .forms import StudentForm,LessonForm,NewUserForm
 
 from django.contrib.auth.decorators import login_required
 
@@ -47,3 +47,13 @@ def addLesson(request):
             return redirect('indexPage')
     form = LessonForm()
     return render(request, 'studTemps/addLesson.html', context={'form':form})
+
+
+def register_request(request):
+    if request.method == "POST":
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('indexPage')
+    form = NewUserForm()
+    return render(request, 'registration/register.html', {'form': form})
