@@ -5,11 +5,12 @@ from .forms import StudentForm,LessonForm,NewUserForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='/login')
 def index(request):
     return render(request, 'studTemps/index.html')
 
 
-@login_required(login_url='/admin')
+@login_required(login_url='/login')
 def showRegisteredStudents(request):
     if request.method == 'POST':
         students = StudentModel.objects.filter(name__icontains=request.POST.get('name'))
@@ -28,7 +29,7 @@ def showExistedLessons(request):
     return render(request, 'studTemps/lessons.html' ,context={'lessons':lessons})
 
 
-@login_required(login_url='/admin')
+@login_required(login_url='/login')
 def addNewStudent(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)

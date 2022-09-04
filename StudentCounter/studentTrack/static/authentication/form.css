@@ -1,0 +1,36 @@
+.asteriskField {
+    display: none;
+}
+
+.requiredField{
+    display: none;
+}
+
+.form-class h1{
+    text-align: center;
+    font-size: 2.4vw;
+    color: #0D6EFD;
+    margin-bottom: 0.8rem;
+}
+
+.form-class form input {
+    padding: 0;
+    margin: 0;
+
+    font-size: 1.5vw;
+}
+
+.form-class form * {
+    margin: 0.33rem;
+    margin-bottom: 1.7rem;  
+}
+
+.form-class .spanc {
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: 0.9rem;
+}
+
+.text-muted {
+    display: none;
+}

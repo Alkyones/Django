@@ -16,8 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+from django.contrib.auth import views as auth_views
+from studentTrack.forms import CustomAuthForm
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('django.contrib.auth.urls')),
+    path('login/', auth_views.LoginView.as_view(authentication_form=CustomAuthForm), name="login",),
     path('', include('studentTrack.urls')),
+    
 ]

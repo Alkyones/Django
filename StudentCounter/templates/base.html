@@ -24,6 +24,7 @@
                 aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            {% if request.user.is_authenticated %}
             {% if request.user.role == 1 %}
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
@@ -52,9 +53,9 @@
                 {% elif request.user.role == 2 %}
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                      <li class="nav-item active">
-                        <a class="nav-link" href="/lessons">Show all lessons</a>
-                      </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/lessons">Show all lessons</a>
+                        </li>
                     </ul>
                 </div>
                 {% elif request.user.role == 3 %}
@@ -71,14 +72,19 @@
                         </li>
                     </ul>
 
-                {% endif %}
+                    {% endif %}
+                    {% block search %}
+                    {% endblock %}
+                    <div class="d-flex">
+                        <a style="color: #efefef" href="/logout">Logout</a>
+                    </div>
+                    {% endif %}
 
 
-                {% block search %}
-                {% endblock %}
-            
+
+
+                </div>
             </div>
-        </div>
     </nav>
 
     {% block content %}

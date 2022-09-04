@@ -1,18 +1,29 @@
 {% extends "base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'authentication/form.css' %}">
+{%endblock%}
+{% block content %}
 
-{% block content %} 
+{% load crispy_forms_tags %}
 
-{% load crispy_forms_tags %}         
+<!--login-->
+<div class="container mt-5 py-5">
+	<div class="row">
+		<div class="col-3"></div>
+		<div class="col-6 form-class ">
+			<h1>Login</h1>
+			<form method="POST">
+				{% csrf_token %}
+				{{form|crispy }}
 
-<!--login--> 
-<div class="container py-5">
-	<h1>Login</h1>
-	<form method="POST">
-		{% csrf_token %}
-		{{ form|crispy }}                    
-		<button class="btn btn-primary" type="submit">Register</button>
-	</form>
-	<p class="text-center">If you don't have an account, <a href="/register">register</a> instead.</p>
+				<button class="btn btn-primary col-12" type="submit">Register</button>
+
+			</form>
+			<p class="text-left spanc">If you don't have an account, <a href="/register">register</a> instead.</p>
+		</div>
+		<div class="col-3"></div>
+	</div>
 </div>
 
 {% endblock %}
