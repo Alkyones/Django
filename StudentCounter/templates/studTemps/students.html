@@ -3,38 +3,38 @@
 <title> StudTracker | Students</title>
 {% endblock %}
 
+{% block head%}
+{% load static %}
+<link rel="stylesheet" href="{% static '/student.css' %}">
+
+{% endblock %}
+
 {% block search %}
-            <form method="post" class="d-flex">
-                {% csrf_token %}
-                <input class="form-control me-sm-2" placeholder="Search student name" name="name" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+<form method="post" class="d-flex">
+    {% csrf_token %}
+    <input class="form-control me-sm-2" placeholder="Search student name" name="name" type="text" placeholder="Search">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+</form>
 {% endblock %}
 
 
 {% block content %}
-
-    <table class=" table table-hover">
-        <thead>
-            <tr class="table-dark">
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Age</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Verified</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for student in students %}
-            <tr>
-                <td>{{student.name}}</td>
-                <td>{{student.email}}</td>
-                <td>{{student.age}}</td>
-                <td>{{student.gender}}</td>
-                <td>{{student.isverified}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div class="container">
+    {% for student in students %}
+        <div class="student-card">
+            <span id="online"></span>
+            
+            <div class="card-head">
+                <img src="https://via.placeholder.com/250" alt="empty">
+            </div>
+            <div class="card-body">
+                <h4>{{ student.name }}</h4>
+                <h4>{{ student.email }}</h4>
+                <h4>{{ student.phone}}</h4>
+                {% if student.isverified%}<span id="verified">&#9733;</span>{%endif%}
+            </div>
+        </div>
+    {% endfor %}
+</div>
 
 {% endblock %}

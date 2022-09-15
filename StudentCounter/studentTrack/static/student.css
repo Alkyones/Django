@@ -1,0 +1,86 @@
+html,body{
+    height: 100%;
+}
+.container {
+    width: 100%;
+    height: 100%;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.student-card {
+    position: relative;
+    width: 28%;
+    height: 40%;
+    background-color: #90b8f5;
+    margin: 1rem;
+    padding: 0.3rem;
+    border-radius: 0.73rem;
+    border: 0.2px solid rgb(196, 196, 233);
+    box-shadow: 20px 20px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: all 1.3s;
+}
+
+.student-card:hover{
+    transform: scale(1.2);
+}
+
+.card-head {
+    text-align: center;
+    position: relative;
+    padding: 0.2rem;
+}
+
+.card-head img {
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+}
+
+
+
+.card-body{
+    margin-top: 2rem;
+}
+
+.card-body h4{
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-left: 0.3rem;
+    line-height: 1rem;
+    color: rgb(252, 237, 237);
+}
+
+#online{
+    position: absolute;
+    top:30;
+    background-color: rgb(106, 228, 106);
+    border-radius: 50%;
+    width:13px;
+    height: 13px;
+}
+
+#verified{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 1.9rem;
+    padding: 1.2rem;
+    color: #0D6EFD
+
+}
+
+
+@media (max-width: 1000px) {
+    .card-head img{
+        width: 120px;
+        height: 120px;
+    }
+    .card-body h4{
+        font-size: 0.7rem;
+    }
+}
