@@ -19,17 +19,19 @@ def index(request):
             video = yt.streams.filter(only_audio=True).first()
 
             path = os.path.join(os.path.expanduser('~'), 'downloads')
-
-            if glob.glob(f"{path}//{video.title}.*"):
+            f_search_name = str(video.title).split(' ')
+            f_new = f_search_name[0] + '*' + f_search_name[-1] + '.*'
+            if glob.glob(f"{path}//{f_new}"):
                 messages.warning(request, "File already exists")
+                return redirect(index)
                 
             else:     
                 out_file = video.download(output_path=os.path.join(os.path.expanduser('~'), 'downloads'))
                 file_name = os.path.splitext(out_file)[0]+".mp3"
                 os.rename(out_file, file_name)
                 messages.success(request, "File downloaded.")            
-            return redirect("index")
+                return redirect("index")
 
-        
+
     form = fileDownloader()
     return render(request, 'index.html', {"form": form})
