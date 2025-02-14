@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .button-container {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .button-container button {
+            margin-right: 10px;
+            padding: 10px 20px;
+            background-color: #2979FF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .button-container button:hover {
+            background-color: #1E88E5;
+        }
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+
+        .product-table th,
+        .product-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .product-table th {
+            background-color: #f8f8f8;
+            font-size: 18px;
+        }
+
+        .product-table td {
+            font-size: 16px;
+        }
+
+        .product-table tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+
+        .product-table tr:hover {
+            background-color: #e2e2e2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Products</div>
+        <div class="button-container">
+            <a href="{% url 'show_all' %}"><button>Show All</button></a>
+            <a href="{% url 'even_prices' %}"><button>Show Even Prices</button></a>
+            <a href="{% url 'odd_prices' %}"><button>Show Odd Prices</button></a>
+        </div>
+        <table class="product-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>
